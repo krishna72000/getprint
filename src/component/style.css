@@ -1,0 +1,28 @@
+.dragable-label-container {
+    background-color: #eee;
+    display: block;
+    border-radius: 10px;
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.label-list {
+    background: #eee;
+    border-radius: 10px;
+}
+
+.label-item {
+    display: flow-root;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.label-name {
+    float: left;
+}
+
+.label-action {
+    float: right;
+}

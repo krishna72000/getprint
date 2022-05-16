@@ -1,0 +1,98 @@
+#sk-draddable-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    touch-action: none;
+    border: 5px solid #bbb;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.sk-draggable-container-grid {
+    display: grid;
+    grid-template-columns: repeat(100, calc(5px));
+    grid-template-rows: repeat(100, calc(5px));
+}
+
+.sk-draggable-container-lines {
+    border-right: 1px solid rgb(235, 235, 235);
+    border-bottom: 1px solid rgb(235, 235, 235);
+    background-size: calc(5px) calc(5px);
+    background-image:
+        linear-gradient(to right, rgb(235, 235, 235) 1px, transparent 1px),
+        linear-gradient(to bottom, rgb(235, 235, 235) 1px, transparent 1px);
+}
+
+.sk-draggable {
+    touch-action: none;
+    user-select: none;
+    display: flex;
+    position: relative;
+    border: 2px solid transparent;
+    z-index: 1;
+}
+
+.sk-draggable-holder {
+    margin: 5px;
+}
+
+
+.sk-draggable-options {
+    opacity: 0;
+    padding: 0 15px;
+    cursor: grabbing;
+}
+
+
+.sk-draggable-options-resize {
+    cursor: nwse-resize;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.sk-draggable-options-style {
+    cursor: pointer;
+    position: absolute;
+    /* padding: 2px; */
+    top: 0px;
+    right: 2px;
+}
+
+.sk-draggable img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.sk-draggable.active {
+    border-radius: 5px;
+    border: 2px solid #eee;
+    box-shadow: 0px 0px 2px 2px #eee;
+    z-index: 999999;
+}
+
+.sk-draggable.active {
+    border-radius: 5px;
+    border: 2px solid #eee;
+    box-shadow: 0px 0px 2px 2px #eee;
+    z-index: 999999;
+}
+
+.sk-draggable.active .sk-draggable-options {
+    opacity: 1;
+    background-color: #eee;
+}
+
+.sk-draggable:hover {
+    border-radius: 5px;
+    border: 2px solid #eee;
+    box-shadow: 0px 0px 2px 2px #eee;
+}
+
+.sk-draggable:hover .sk-draggable-options {
+    opacity: 1;
+    background-color: #eee;
+}
