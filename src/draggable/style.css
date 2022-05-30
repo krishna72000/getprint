@@ -1,4 +1,4 @@
-.sk_draddable_container {
+#sk-draddable-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,11 +9,13 @@
     border-radius: 5px;
 }
 
-.sk_draggable_container_grid {
+.sk-draggable-container-grid {
     display: grid;
     grid-template-columns: repeat(100, calc(5px));
     grid-template-rows: repeat(100, calc(5px));
+}
 
+.sk-draggable-container-lines {
     border-right: 1px solid rgb(235, 235, 235);
     border-bottom: 1px solid rgb(235, 235, 235);
     background-size: calc(5px) calc(5px);
@@ -22,7 +24,7 @@
         linear-gradient(to bottom, rgb(235, 235, 235) 1px, transparent 1px);
 }
 
-.sk_draggable {
+.sk-draggable {
     touch-action: none;
     user-select: none;
     display: flex;
@@ -31,26 +33,26 @@
     z-index: 1;
 }
 
-.sk_draggable_holder {
+.sk-draggable-holder {
     margin: 5px;
 }
 
 
-.sk_draggable_options {
+.sk-draggable-options {
     opacity: 0;
     padding: 0 15px;
     cursor: grabbing;
 }
 
 
-.sk_draggable_options_resize {
+.sk-draggable-options-resize {
     cursor: nwse-resize;
     position: absolute;
     bottom: 0px;
     right: 0px;
 }
 
-.sk_draggable_options_style {
+.sk-draggable-options-style {
     cursor: pointer;
     position: absolute;
     /* padding: 2px; */
@@ -58,39 +60,39 @@
     right: 2px;
 }
 
-.sk_draggable img {
+.sk-draggable img {
     width: 100%;
     height: 100%;
 }
 
 
 
-.sk_draggable.active {
+.sk-draggable.active {
     border-radius: 5px;
     border: 2px solid #eee;
     box-shadow: 0px 0px 2px 2px #eee;
     z-index: 999999;
 }
 
-.sk_draggable.active {
+.sk-draggable.active {
     border-radius: 5px;
     border: 2px solid #eee;
     box-shadow: 0px 0px 2px 2px #eee;
     z-index: 999999;
 }
 
-.sk_draggable.active .sk_draggable_options {
+.sk-draggable.active .sk-draggable-options {
     opacity: 1;
     background-color: #eee;
 }
 
-.sk_draggable:hover {
+.sk-draggable:hover {
     border-radius: 5px;
     border: 2px solid #eee;
     box-shadow: 0px 0px 2px 2px #eee;
 }
 
-.sk_draggable:hover .sk_draggable_options {
+.sk-draggable:hover .sk-draggable-options {
     opacity: 1;
     background-color: #eee;
 }

@@ -1,9 +1,8 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import DragImage from './DragImage';
 import DragItem from './DragItem';
-import style from './style.module.css';
+import './style.css';
 export default function Draggable({ items, ...rest }) {
-    const parentRef = useRef();
     const [zoom, setzoom] = useState(1.0);
     const zoomIn = () => {
         setzoom(zoom + 0.2);
@@ -15,18 +14,16 @@ export default function Draggable({ items, ...rest }) {
         }
     }
     return (
-        <div
-            id='sk-draddable-container'
-            ref={parentRef}
+        <div id="sk-draddable-container"
             {...rest}
-            className={style.sk_draggable_container_grid}
+            className="sk-draggable-container-grid sk-draggable-container-lines"
             style={{ transform: `scale(${zoom})` }}
         >
             {items.map((e, i) => {
                 if (e.type == "Label") {
-                    return (<DragItem key={e.id} parentRef={parentRef} modal={e} content={`Label ${e.name}`} />);
+                    return (<DragItem key={e.id} modal={e} content={`Label ${e.name}`} />);
                 } else {
-                    return (<DragImage key={e.id} parentRef={parentRef} modal={e} />);
+                    return (<DragImage key={e.id} modal={e} />);
                 }
             })}
         </div>
