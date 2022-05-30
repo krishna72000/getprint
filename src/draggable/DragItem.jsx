@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import DraggableEditableOptions from "./DraggableEditableOptions";
-export default function DragItem({ modal, content, ...rest }) {
+export default function DragItem({ modal, content, parentRef, ...rest }) {
 
     const [contentData, setContent] = useState(content);
     const [isOpen, setDialogs] = useState(false);

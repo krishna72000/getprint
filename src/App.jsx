@@ -7,54 +7,10 @@ import Sortable from './sortable/Sortable';
 import Grid from '@mui/material/Grid';
 import ListDraggable from 'component/ListDraggable';
 import rid from 'helper/rid';
+import dataList from 'data';
 
 function App() {
-  const [ditems, setItems] = useState([
-    {
-      id: rid(),
-      ino: 1,
-      sno: 1,
-      name: "label 1",
-      type: "Label",
-      fixed: false,
-      isactive: false
-    }, {
-      id: rid(),
-      ino: 2,
-      sno: 2,
-      name: "image 2",
-      type: "Image",
-      fixed: false,
-      isactive: false
-    },
-    {
-      id: rid(),
-      ino: 3,
-      sno: 3,
-      name: "label 3",
-      type: "Label",
-      fixed: false,
-      isactive: false
-    },
-    {
-      id: rid(),
-      ino: 4,
-      sno: 4,
-      name: "image 4",
-      type: "Image",
-      fixed: false,
-      isactive: false
-    },
-    {
-      id: rid(),
-      ino: 5,
-      sno: 5,
-      name: "label 5",
-      type: "Label",
-      fixed: false,
-      isactive: false
-    }
-  ]);
+  const [ditems, setItems] = useState(dataList);
   // console.log(ditems);
   const [modal, setModal] = useState({ type: "Label", isOpen: false });
 
