@@ -68,7 +68,7 @@ export default function DragItem({ modal, content, parentRef, ...rest }) {
         <>
             <div
                 ref={dragItem}
-                style={{ zIndex: (Math.floor(1000 / (modal.sno + 1))) }}
+                style={{ zIndex: (Math.floor(1000 / (modal.sno + 1))), display:modal.display}}
                 className={'sk-draggable sk-draggable-item ' + (modal.isactive ? "active " : " ") + (rest.className ? rest.className : "")}
             >
                 <div className="sk-draggable-holder">

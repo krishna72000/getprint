@@ -1,5 +1,5 @@
 #sk-draddable-container {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -28,13 +28,14 @@
     touch-action: none;
     user-select: none;
     display: flex;
-    position: relative;
+    position: absolute;
     border: 2px solid transparent;
     z-index: 1;
 }
 
 .sk-draggable-holder {
     margin: 5px;
+    text-wrap: nowrap;
 }
 
 
@@ -49,15 +50,13 @@
     cursor: nwse-resize;
     position: absolute;
     bottom: 0px;
-    right: 0px;
 }
 
 .sk-draggable-options-style {
     cursor: pointer;
     position: absolute;
-    /* padding: 2px; */
+    padding: 2px;
     top: 0px;
-    right: 2px;
 }
 
 .sk-draggable img {
@@ -66,13 +65,6 @@
 }
 
 
-
-.sk-draggable.active {
-    border-radius: 5px;
-    border: 2px solid #eee;
-    box-shadow: 0px 0px 2px 2px #eee;
-    z-index: 999999;
-}
 
 .sk-draggable.active {
     border-radius: 5px;

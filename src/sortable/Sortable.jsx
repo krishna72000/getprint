@@ -5,20 +5,30 @@ import './style.css';
 export default function Sortable({ items, setitems, ...rest }) {
 
     const listContainer = useRef(null);
-
     const onDelete = (id) => {
-        setitems(items.filter((i) => {
+        setitems([...items.filter((i) => {
             return i.id !== id;
-        }));
+        })]);
+        console.log(items)
+    }
+    const onDisplay = (id) => {
+        setitems([...items.map((i) => {
+             if(i.id === id){
+                i.display=i.display=='none'?'flex':'none'
+             }
+             return i
+        })]);
     }
     const onActive = (id) => {
-        setitems(items.map((i) => {
-            if (id == i.id) {
-                return { ...i, isactive: (!i.isactive) };
-            } else {
-                return { ...i, isactive: false };
-            }
-        }));
+        setitems(pre=>{
+            return pre.map((i) => {
+                if (id == i.id) {
+                    return { ...i, isactive: (!i.isactive) };
+                } else {
+                    return { ...i, isactive: false };
+                }
+            })
+        });
     }
 
     useEffect(() => {
@@ -28,23 +38,22 @@ export default function Sortable({ items, setitems, ...rest }) {
             // console.log(item, cpos, dpos);
             cpos++;
             dpos++;
-            // console.log(items);
-            const nit = items.map((e) => {
-                let sno = e.sno;
-                if (e.sno == cpos) {
-                    sno = dpos;
-                    return { ...e, sno, isactive: true };
-                } else {
-                    if (cpos < dpos && e.sno >= cpos && e.sno <= dpos) {
-                        sno--;
-                    } else if (e.sno <= cpos && e.sno >= dpos) {
-                        sno++;
+            setitems(pre=>{
+                return pre.map((e) => {
+                    let sno = e.sno;
+                    if (e.sno == cpos) {
+                        sno = dpos;
+                        return { ...e, sno, isactive: true };
+                    } else {
+                        if (cpos < dpos && e.sno >= cpos && e.sno <= dpos) {
+                            sno--;
+                        } else if (e.sno <= cpos && e.sno >= dpos) {
+                            sno++;
+                        }
                     }
-                }
-                return { ...e, sno, isactive: false };
+                    return { ...e, sno, isactive: false };
+                })
             });
-            // console.log(nit);
-            setitems([...nit]);
         });
     }, [items]);
     return (
@@ -53,7 +62,7 @@ export default function Sortable({ items, setitems, ...rest }) {
             ref={listContainer}
         >
             {items.map((e) => {
-                return (<Sitem key={e.id} modal={e} onDelete={onDelete} onActive={onActive} />);
+                return (<Sitem key={e.id} modal={e} onDelete={onDelete} onDisplay={onDisplay} onActive={onActive} />);
             })}
         </div>
     );

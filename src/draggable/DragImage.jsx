@@ -132,7 +132,7 @@ export default function DragImage({ modal, ...rest }) {
         <>
             <div
                 ref={dragItem}
-                style={{ zIndex: (Math.floor(1000 / (modal.sno + 1))) }}
+                style={{ zIndex: (Math.floor(1000 / (modal.sno + 1))) ,display:modal.display}}
                 className={'sk-draggable sk-draggable-image'+(modal.isactive?" active":"")}
             ><div
                 className="sk-draggable-holder">

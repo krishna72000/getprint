@@ -11,7 +11,6 @@ import dataList from 'data';
 
 function App() {
   const [ditems, setItems] = useState(dataList);
-  // console.log(ditems);
   const [modal, setModal] = useState({ type: "Label", isOpen: false });
 
   const handleAdd = (name) => {
@@ -26,7 +25,8 @@ function App() {
         name,
         type: modal.type,
         fixed: false,
-        isactive: false
+        isactive: false,
+        display:'flex'
       }
     ]);
   }
@@ -34,21 +34,23 @@ function App() {
     setModal({ type: type, isOpen: true });
   }
 
+  const [zoom, setZoom] = useState(1.0);
+
+
   return (
-    <div
-    // style={{ backgroundColor: "#eee" }}
-    >
+    <div>
       <Grid container spacing={4} justifyContent="space-around" direction="row">
         <Grid item xs={12} lg={8}>
           <Draggable
             items={ditems}
-            style={{ height: "500px", padding: "40px 5px", margin: "10px 5px 0px 5px" }}
+            zoom={zoom}
+            style={{ height: "500px", padding: "40px 5px", margin: "10px 5px 0px 5px"}}
           />
         </Grid>
         <Grid item xs={12} lg={4}>
           <Grid container direction="column">
             <Grid item xs={6} lg={12}>
-              <ListDraggable handleOpen={handleOpen} />
+              <ListDraggable handleOpen={handleOpen} setZoom={setZoom}/>
             </Grid>
             <Grid item xs={6} lg={12}>
               <Sortable
