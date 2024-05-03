@@ -13,14 +13,22 @@ export default function Sortable({ items, setitems, ...rest }) {
     }
     const onDisplay = (id) => {
         setitems([...items.map((i) => {
-             if(i.id === id){
-                i.display=i.display=='none'?'flex':'none'
-             }
-             return i
+            if (i.id === id) {
+                i.display = i.display == 'none' ? 'flex' : 'none'
+            }
+            return i
+        })]);
+    }
+    const onLock = (id) => {
+        setitems([...items.map((i) => {
+            if (i.id === id) {
+                i.isLocked = !i.isLocked
+            }
+            return i
         })]);
     }
     const onActive = (id) => {
-        setitems(pre=>{
+        setitems(pre => {
             return pre.map((i) => {
                 if (id == i.id) {
                     return { ...i, isactive: (!i.isactive) };
@@ -32,13 +40,13 @@ export default function Sortable({ items, setitems, ...rest }) {
     }
 
     useEffect(() => {
-        SortService(listContainer.current,(i)=>{
+        SortService(listContainer.current, (i) => {
             // onActive(i.getAttribute("id"));
         }, function (item, cpos, dpos) {
             // console.log(item, cpos, dpos);
             cpos++;
             dpos++;
-            setitems(pre=>{
+            setitems(pre => {
                 return pre.map((e) => {
                     let sno = e.sno;
                     if (e.sno == cpos) {
@@ -62,7 +70,7 @@ export default function Sortable({ items, setitems, ...rest }) {
             ref={listContainer}
         >
             {items.map((e) => {
-                return (<Sitem key={e.id} modal={e} onDelete={onDelete} onDisplay={onDisplay} onActive={onActive} />);
+                return (<Sitem key={e.id} modal={e} onDelete={onDelete} onLock={onLock} onDisplay={onDisplay} onActive={onActive} />);
             })}
         </div>
     );

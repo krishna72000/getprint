@@ -1,8 +1,4 @@
-import DialogTitle from '@mui/material/DialogTitle';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-
-import { Box, List, ListItem, TextField } from '@mui/material';
+import Modal from 'component/Modal';
 
 export default function DraggableImageOptions({ name, options, setSelectedImage, setOptions, isOpen, setClose }) {
     const handleClose = () => {
@@ -20,52 +16,45 @@ export default function DraggableImageOptions({ name, options, setSelectedImage,
         setOptions({ ...options, width: (event.target.value + "px") });
     };
     return (
-        <Dialog
-            fullWidth
+        <Modal
             onClose={handleClose}
-            open={isOpen}>
-            <DialogTitle>Image Options - {name}</DialogTitle>
-            <DialogContent>
-                <List>
-                    <ListItem>
-                        <Box
-                            variant="contained"
-                            component="label"
-                        >
-                            Select File
-                            <input
-                                type="file"
-                                hidden
-                                onChange={(e) => {
-                                    imageChange(e);
-                                }}
-                                accept="image/*"
-                            />
-                        </Box>
-                    </ListItem>
+            open={isOpen}
+            title={"Image Options - " + name}
+            hasSave={false}
+        >
+            <div style={{ display: "grid" }}>
+                <div className='field'>
+                    <label>Select File</label>
+                    <input
+                        type="file"
+                        hidden
+                        onChange={(e) => {
+                            imageChange(e);
+                        }}
+                        accept="image/*"
+                    />
 
-                    <ListItem>
-                        <TextField
-                            fullWidth
-                            label="Width"
-                            type="number"
-                            min={50}
-                            value={parseInt(options.width)}
-                            onChange={handleW}
-                        />
-                    </ListItem>
-                    <ListItem>
-                        <TextField
-                            fullWidth
-                            label="Height"
-                            type="number"
-                            min={50}
-                            value={parseInt(options.height)}
-                            onChange={handleH}
-                        />
-                    </ListItem>
-                </List>
-            </DialogContent>
-        </Dialog>
-    );
+                </div>
+                <div className='field'>
+                    <label>Width</label>
+                    <input
+                        type="number"
+                        min={50}
+                        value={parseInt(options.width)}
+                        onChange={handleW}
+                    />
+
+                </div>
+                <div className='field'>
+                    <label>Height</label>
+                    <input
+                        type="number"
+                        min={50}
+                        value={parseInt(options.height)}
+                        onChange={handleH}
+                    />
+                </div>
+            </div>
+        </Modal>
+    )
 }

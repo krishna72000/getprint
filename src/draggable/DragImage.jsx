@@ -128,12 +128,28 @@ export default function DragImage({ modal, ...rest }) {
         container.addEventListener("mousemove", drag, false);
         resize();
     }, []);
+
+    if (modal.isLocked) {
+        return <div className="sk-draggable-locked"
+            style={{ zIndex: (Math.floor(1000 / (modal.sno + 1))), display: modal.display }}
+        >
+            <div className="sk-draggable-holder">
+                <div style={{ ...options }}>
+                    <img
+                        height="100%"
+                        width="100%"
+                        src={selectedImage ? URL.createObjectURL(selectedImage) : iconImg}
+                    />
+                </div>
+            </div>
+        </div>
+    }
     return (
         <>
             <div
                 ref={dragItem}
-                style={{ zIndex: (Math.floor(1000 / (modal.sno + 1))) ,display:modal.display}}
-                className={'sk-draggable sk-draggable-image'+(modal.isactive?" active":"")}
+                style={{ zIndex: (Math.floor(1000 / (modal.sno + 1))), display: modal.display }}
+                className={'sk-draggable sk-draggable-image' + (modal.isactive ? " active" : "")}
             ><div
                 className="sk-draggable-holder">
                     <div

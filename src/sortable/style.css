@@ -12,10 +12,12 @@
     background: #fff;
 }
 
+.color-red{
+    color: rgb(201, 25, 25);
+}
 
 .sk-sortable-item-action {
     float: right;
-    color: rgb(201, 25, 25);
     cursor: pointer;
     padding: 2px 4px;
 }

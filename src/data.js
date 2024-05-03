@@ -7,8 +7,9 @@ export default [
         name: "label 1",
         type: "Label",
         fixed: false,
-        display:'flex',
-        isactive: false
+        display: 'flex',
+        isactive: false,
+        isLocked: false
     }, {
         id: rid(),
         ino: 2,
@@ -16,8 +17,9 @@ export default [
         name: "image 2",
         type: "Image",
         fixed: false,
-        display:'flex',
-        isactive: false
+        display: 'flex',
+        isactive: false,
+        isLocked: false
     },
     {
         id: rid(),
@@ -26,8 +28,9 @@ export default [
         name: "label 3",
         type: "Label",
         fixed: false,
-        display:'flex',
-        isactive: false
+        display: 'flex',
+        isactive: false,
+        isLocked: false
     },
     {
         id: rid(),
@@ -36,8 +39,9 @@ export default [
         name: "image 4",
         type: "Image",
         fixed: false,
-        display:'flex',
-        isactive: false
+        display: 'flex',
+        isactive: false,
+        isLocked: false
     },
     {
         id: rid(),
@@ -46,7 +50,8 @@ export default [
         name: "label 5",
         type: "Label",
         fixed: false,
-        display:'flex',
-        isactive: false
+        display: 'flex',
+        isactive: false,
+        isLocked: false
     }
 ]

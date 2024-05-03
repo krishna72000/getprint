@@ -4,7 +4,6 @@ import Draggable from './draggable/Draggable';
 import { useState } from 'react';
 import AddDraggable from './component/AddDraggable';
 import Sortable from './sortable/Sortable';
-import Grid from '@mui/material/Grid';
 import ListDraggable from 'component/ListDraggable';
 import rid from 'helper/rid';
 import dataList from 'data';
@@ -26,7 +25,8 @@ function App() {
         type: modal.type,
         fixed: false,
         isactive: false,
-        display:'flex'
+        display: 'flex',
+        isLocked: false
       }
     ]);
   }
@@ -34,37 +34,37 @@ function App() {
     setModal({ type: type, isOpen: true });
   }
 
-  const [zoom, setZoom] = useState(1.0);
+  const [zoom, setZoom] = useState(10);
 
 
   return (
     <div>
-      <Grid container spacing={4} justifyContent="space-around" direction="row">
-        <Grid item xs={12} lg={8}>
-          <Draggable
-            items={ditems}
-            zoom={zoom}
-            style={{ height: "500px", padding: "40px 5px", margin: "10px 5px 0px 5px"}}
-          />
-        </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container direction="column">
-            <Grid item xs={6} lg={12}>
-              <ListDraggable handleOpen={handleOpen} setZoom={setZoom}/>
-            </Grid>
-            <Grid item xs={6} lg={12}>
+      <div container spacing={4} justifyContent="space-around" direction="row">
+        <div className="sk-grid-container">
+          <div className="sk-main-section">
+            <Draggable
+              items={ditems}
+              zoom={(zoom + 1) / 100}
+              style={{ height: "500px", padding: "40px 5px", margin: "10px 5px 0px 5px" }}
+            />
+          </div>
+          <div className="sk-sidebar">
+            <div className="sk-sidebar-top">
+              <ListDraggable handleOpen={handleOpen} setZoom={setZoom} zoom={zoom} />
+            </div>
+            <div className="sk-sidebar-bottom">
               <Sortable
                 items={ditems} setitems={setItems}
                 style={{ height: "300px", padding: "10px 5px" }} />
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
+            </div>
+          </div>
+        </div>
+      </div>
       <AddDraggable
         modal={modal}
         addItem={handleAdd}
         setClose={setModal} />
-    </div >
+    </div>
   );
 }
 

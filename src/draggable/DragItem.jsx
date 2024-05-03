@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import DraggableEditableOptions from "./DraggableEditableOptions";
 export default function DragItem({ modal, content, parentRef, ...rest }) {
 
+
     const [contentData, setContent] = useState(content);
     const [isOpen, setDialogs] = useState(false);
     const dragItem = useRef(null);
@@ -64,12 +65,24 @@ export default function DragItem({ modal, content, parentRef, ...rest }) {
         container.addEventListener("mouseup", dragEnd, false);
         container.addEventListener("mousemove", drag, false);
     }, []);
+
+    if (modal.isLocked) {
+        return <div className="sk-draggable-locked"
+            style={{ zIndex: (Math.floor(1000 / (modal.sno + 1))), display: modal.display }}
+        >
+            <div className="sk-draggable-holder">
+                <div
+                    dangerouslySetInnerHTML={{ __html: contentData }}
+                ></div>
+            </div>
+        </div>
+    }
     return (
         <>
             <div
                 ref={dragItem}
-                style={{ zIndex: (Math.floor(1000 / (modal.sno + 1))), display:modal.display}}
-                className={'sk-draggable sk-draggable-item ' + (modal.isactive ? "active " : " ") + (rest.className ? rest.className : "")}
+                style={{ zIndex: (Math.floor(1000 / (modal.sno + 1))), display: modal.display }}
+                className={'sk-draggable sk-draggable-item ' + (modal.isactive ? "active " : " ") + (rest.className ?? "")}
             >
                 <div className="sk-draggable-holder">
                     <div

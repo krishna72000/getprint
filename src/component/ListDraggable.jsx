@@ -2,25 +2,13 @@ import './style.css';
 import rid from 'helper/rid'
 import html2canvas from 'html2canvas';
 
-export default function ListDraggable({setZoom, handleOpen }) {
+export default function ListDraggable({setZoom, handleOpen ,zoom}) {
     const dragableList = [
         { name: "Label" },
         { name: "Image" }
     ];
-
-    // const exportToPDF = () => {
-    //     html2canvas(document.querySelector('.sk-draddable-container')).then((canvas) => {
-    //       const pdf = new jsPDF('p', 'mm', 'a4');
-    //       const imgData = canvas.toDataURL('image/png');
-    //       const imgProps = pdf.getImageProperties(imgData);
-    //       const pdfWidth = pdf.internal.pageSize.getWidth();
-    //       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-    //       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    //       pdf.save('image.pdf');
-    //     });
-    //   };
     
-      const exportToJPG = () => {
+    const exportToJPG = () => {
         html2canvas(document.querySelector('#sk-draddable-container')).then((canvas) => {
           const imgData = canvas.toDataURL('image/jpeg');
           const downloadLink = document.createElement('a');
@@ -28,7 +16,7 @@ export default function ListDraggable({setZoom, handleOpen }) {
           downloadLink.download = 'image.jpg';
           downloadLink.click();
         });
-      };
+    };
 
     return (
         <div
@@ -52,16 +40,29 @@ export default function ListDraggable({setZoom, handleOpen }) {
             </div>
             <div style={{flex:""}}>
                     <span>Zoom</span>
-                    <button onClick={()=>{
-                        setZoom(pre=>{
-                            return pre+0.1
-                        })
-                    }}>+</button>
-                    <button onClick={()=>{
-                        setZoom(pre=>{
-                            return pre-0.1
-                        })
-                    }}>-</button>
+                    <div className="range-slider">
+                        <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value={zoom}
+                            onChange={(e)=>{
+                                setZoom(pre=>{
+                                    return (e.target.value)
+                                })
+                            }}
+                            className="range-input"
+                        />
+                        <div className="range-value">
+                            <input type='number' value={zoom}
+                                onChange={(e)=>{
+                                    setZoom(pre=>{
+                                        return (e.target.value)
+                                    })
+                                }}
+                            />
+                        </div>
+                    </div>
                 </div>
                 <div>
                 <button onClick={()=>{
